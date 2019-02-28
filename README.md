@@ -1,4 +1,8 @@
 # BitBuild
+<a href="https://codeclimate.com/github/kenware/BitBuild/maintainability"><img src="https://api.codeclimate.com/v1/badges/0fcab0550d2db5d424b7/maintainability" /></a>
+[![CircleCI](https://circleci.com/gh/kenware/BitBuild.svg?style=svg)](https://circleci.com/gh/kenware/BitBuild)
+<a href="https://codeclimate.com/github/kenware/BitBuild/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0fcab0550d2db5d424b7/test_coverage" /></a>
+[![Coverage Status](https://coveralls.io/repos/github/kenware/BitBuild/badge.svg?branch=develop)](https://coveralls.io/github/kenware/BitBuild?branch=develop)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
 
