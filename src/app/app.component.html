@@ -1,44 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="white">
-  <div class="nav-wrapper">
-    <a *ngIf="wedding" href="#" class="page-title black-text">{{wedding.name | uppercase}}</a>
-
-    <a class="sideNav"
-    data-activates="nav-mobile" class="button-collapse hide-on-large-only">
-      <i class="material-icons grey-text">menu</i>
-    </a>
-
-    <ul class="right hide-on-med-and-down">
-      <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route">{{ menuItem.name | uppercase }}</a></li>
-    </ul>
-
-    <ul id="nav-mobile" class="side-nav">
-      <li>
-        <a ><i class="material-icons" (click)="close()">close</i></a>
-      </li>
-      <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route" (click)="close()">{{ menuItem.name | uppercase }}</a></li>
-      <div class="divider">
-
-      </div>
-    </ul>
-  </div>
-</nav>
-
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="app">
+  <nav class="">
+    <div class="nav-wrapper white">
+      <a routerLink="/" class="brand-logo"><img src="../assets/images/l2.png" class="logo" /></a>
+      <a materialize="sideNav" href="#" data-activates="slide-navigation" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li routeLinkActive="active"><a routerLink="/signup">SignUp</a></li>
+        <li routeLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li routeLinkActive="active"><a routerLink="/about">About</a></li>
+        <li routeLinkActive="active"><a routerLink="/contact">Contact</a></li>
+      </ul>
+      
+      <ul id="slide-navigation" class="side-nav sidenav">
+          <li routeLinkActive="active"><a routerLink="/signup">SignUp</a></li>
+          <li routeLinkActive="active"><a routerLink="/login">Login</a></li>
+          <li routeLinkActive="active"><a routerLink="/about">About</a></li>
+          <li routeLinkActive="active"><a routerLink="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <ul id="dropdown1" class="dropdown-content ">
+    <li><a href="#">
+      logOut
+    </a></li>
+  </ul>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-
 <router-outlet></router-outlet>
