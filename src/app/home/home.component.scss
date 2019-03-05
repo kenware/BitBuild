@@ -1,0 +1,113 @@
+.paralla {
+    position: relative;
+    .parallax-img{
+        margin-top: 100px;
+        height: 300px;
+        width: 300px;
+        border-radius: 45%;
+        animation: App-bit infinite 100s linear;
+    }
+}
+.calculator {
+  background-color: #f1f1f1 !important;
+  button {
+    background-color: #facd7e !important;
+  }
+  .recieve {
+    margin-bottom: 1rem;
+  }
+}
+.sub-header {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.justify {
+   text-align: justify;
+   padding: 0px 15px 0 0;
+}
+.container-fluid {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+@keyframes App-bit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+a, .arrow-color{
+    color: rgb(235, 164, 13);
+}
+.home-footer {
+    .footer-text {
+      padding-top: 21px !important;
+    }
+    height: 50px;
+    background-color: #f1f1f1 !important;
+  }
+  .testimonials {
+    margin: 50px auto;
+    h5 {
+      text-align: center;
+      font-weight: bold;
+      color: #ff9800;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+    }
+    h5::after {
+     content: '';
+     background: #ff9800;
+     height: 3px;
+     display: block;
+     width: 170px;
+     margin: 20px auto 5px;
+    }
+    .row {
+        margin-top: 30px !important;
+        .s4{
+            margin: 4px auto !important;
+        }
+    }
+    .profile {
+       margin-top: 3rem;
+       position: relative;
+       padding: 70px 10px 10px;
+       background-color: #efefef;
+       h3 {
+           color:#ff9800;
+           font-size: 20px;
+       }
+       span {
+           font-size: 12px;
+           color: #333;
+       }
+       img {
+           top: -60px;
+           position: absolute;
+           left: calc(50% - 55px);
+           border: 10px solid white;
+       }
+       .user {
+           height: 100px;
+           width: 100px;
+           border-radius: 50%;
+       }
+       blockquote {
+        border-left: 10px solid #ccc !important;
+        margin: 1.5em 10px !important;
+        padding: 0.5em 10px !important;
+        quotes: "\201C""\201D""\2018""\2019" !important;
+      }
+      .fa-quote-left, .fa-quote-right {
+         color: #ff9800;
+      }
+    }
+  }
+ .view-more {
+    color: #ff9800;
+    cursor: pointer;
+    font-weight: bold;
+ }
+ .plan .card .card-title {
+    font-size: 18px !important;
+    font-weight: 300;
+}
