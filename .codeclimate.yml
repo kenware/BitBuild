@@ -1,4 +1,3 @@
-version: "2"
 plugins:
   eslint:
    	enabled: false
@@ -6,3 +5,4 @@ exclude_patterns:
 - "server/models"
 - "server/migrations"
 - "server/seeders"
+
