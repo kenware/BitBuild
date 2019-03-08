@@ -1,4 +1,5 @@
-'use strict';
+
+
 module.exports = (sequelize, DataTypes) => {
   const complain = sequelize.define('complain', {
     message: {
@@ -10,15 +11,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
   }, {});
-  complain.associate = function(models) {
+  complain.associate = function (models) {
     // associations can be defined here
     complain.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
-    })
+    });
   };
   return complain;
 };

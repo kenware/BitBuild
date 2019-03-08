@@ -26,6 +26,12 @@ module.exports = {
     wallet: {
       type: Sequelize.DECIMAL,
     },
+    address: {
+      type: Sequelize.DECIMAL,
+    },
+    guid: {
+      type: Sequelize.DECIMAL,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
