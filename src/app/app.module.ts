@@ -12,11 +12,15 @@ import 'materialize-css';
 import 'materialize-css/dist/css/materialize.css';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { AccountComponent } from './account/account.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent,
+    AccountComponent
   ],
   imports: [
     MaterializeModule,

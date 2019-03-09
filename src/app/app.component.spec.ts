@@ -4,6 +4,11 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LoginComponent } from './login/login.component';
+import { MaterializeModule } from 'angular2-materialize';
+import 'materialize-css';
+import 'materialize-css/dist/css/materialize.css';
+import * as Materialize from "angular2-materialize";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,11 +16,14 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         FormsModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MaterializeModule
+
       ],
       declarations: [
         AppComponent,
-        SignupComponent
+        SignupComponent,
+        LoginComponent
       ],
     }).compileComponents();
   }));

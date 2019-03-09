@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import Validator from 'validatorjs';
 import { Alert } from '../shared/alert';
 import { WalletService } from '../service/wallet/wallet.service';
+
 import { host } from '../shared/config';
+import { AuthService } from '../service/auth/auth.service';
+import { Router } from '@angular/router';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-signup',
@@ -19,8 +23,8 @@ export class SignupComponent implements OnInit {
     name: null,
     password: null,
   };
-  user: any = {};
-  constructor(private WalletService: WalletService) { }
+  actions = new EventEmitter<string|MaterializeAction>();
+  constructor(private WalletService: WalletService, private AuthService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,8 +36,16 @@ export class SignupComponent implements OnInit {
       this.errors.email = validator.errors.first('email')
     }
   }
-
-  async submit() {
+  save(user) {
+    console.log(user)
+    const { id, token, guid } = user;
+    this.AuthService.authenticate(id, token, guid)
+    const message = 'SignUp successful'
+    Alert('SignUp', 'success', { message }, 3000);
+    this.actions.emit({action:"modal",params:['close']});
+    this.router.navigate(['/account'])
+  }
+  submit() {
     this.errors = {}
     const data = {
       email: this.email,
@@ -56,16 +68,8 @@ export class SignupComponent implements OnInit {
     if (!isError) {
       const url = `${host}/v1/auth/signup`;
       this.WalletService.post(url, data).subscribe(
-        user => {
-          const message = 'SignUp successful'
-          console.log(user)
-          this.user = user
-          Alert('SignUp', 'success', { message }, 3000);
-        },
-        error => {
-          console.log(error)
-          Alert('SignUp', 'error', error.error.errors, 3000);
-        }
+        user => this.save(user),
+        error => Alert('SignUp', 'error', error.error.errors, 3000)
       )
     }
 

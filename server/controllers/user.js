@@ -18,7 +18,7 @@ export default class userController {
         email, name, password, isAdmin: req.isAdmin, guid: wallet.guid,
       });
       user = new UserHelper().userWithToken(user);
-      return res.status(201).json({ user });
+      return res.status(201).json(user);
     } catch (err) {
       return res.status(400).json(err);
     }
