@@ -6,7 +6,9 @@ export default class userHelper {
   }
 
   userWithToken(user) {
-    const tokenData = { id: user.id, emai: user.email, isAdmin: user.isAdmin };
+    const tokenData = {
+      id: user.id, emai: user.email, isAdmin: user.isAdmin, guid: user.guid,
+    };
     const token = this.generateToken(tokenData);
     // eslint-disable-next-line no-param-reassign
     user.dataValues.token = token;

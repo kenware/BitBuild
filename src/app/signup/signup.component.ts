@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Validator from 'validatorjs';
 import { Alert } from '../shared/alert';
+import { WalletService } from '../service/wallet/wallet.service';
+import { host } from '../shared/config';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,7 +19,8 @@ export class SignupComponent implements OnInit {
     name: null,
     password: null,
   };
-  constructor() { }
+  user: any = {};
+  constructor(private WalletService: WalletService) { }
 
   ngOnInit() {
   }
@@ -28,7 +32,8 @@ export class SignupComponent implements OnInit {
       this.errors.email = validator.errors.first('email')
     }
   }
-  submit() {
+
+  async submit() {
     this.errors = {}
     const data = {
       email: this.email,
@@ -41,11 +46,28 @@ export class SignupComponent implements OnInit {
       password: ['required', 'min:10', { in: [this.vpassword] }],
     }
     const validator = new Validator(data, rule);
+    const isError = validator.fails()
     const allError = validator.errors.errors;
-    console.log(allError)
+
     Object.entries(allError).forEach((obj) => {
       this.errors[obj[0]] = validator.errors.first(obj[0]);
     });
-    Alert('SignUp', 'error', allError, 3000);
+
+    if (!isError) {
+      const url = `${host}/v1/auth/signup`;
+      this.WalletService.post(url, data).subscribe(
+        user => {
+          const message = 'SignUp successful'
+          console.log(user)
+          this.user = user
+          Alert('SignUp', 'success', { message }, 3000);
+        },
+        error => {
+          console.log(error)
+          Alert('SignUp', 'error', error.error.errors, 3000);
+        }
+      )
+    }
+
   }
 }

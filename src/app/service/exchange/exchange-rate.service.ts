@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import {  blockchain } from '../../shared/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExchangeRateService {
-  private base_url = 'https://blockchain.info';
+  private base_url = blockchain;
   constructor(private http: HttpClient) { 
   }
   getExchangeRate(url): Observable<object | number>{

@@ -6,7 +6,7 @@
     "blockchain": "./node_modules/.bin/blockchain-wallet-service start --port 3000",
     "start-dev": "ng serve -o",
     "start:node": "nodemon --exec babel-node server.js --presets=env",
-    "start": "babel-node server.js --presets=env",
+    "start": "babel-node server.js --presets=env & npm run blockchain",
     "build": "ng build",
     "test": "ng test --code-coverage --watch=false --no-progress",
     "test-dev": "ng test --code-coverage",
@@ -29,6 +29,7 @@
     "babel-preset-env": "^1.7.0",
     "bcrypt": "^3.0.4",
     "blockchain-wallet-service": "^0.26.3",
+    "blockchain.info": "^2.12.1",
     "body-parser": "^1.18.3",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
@@ -81,5 +82,6 @@
       "*.test.ts",
       "src/"
     ]
-  }
+  },
+  "proxy": "http://127.0.0.1:5000"
 }
