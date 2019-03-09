@@ -11,10 +11,12 @@ import { ChartsModule } from 'ng2-charts';
 import 'materialize-css';
 import 'materialize-css/dist/css/materialize.css';
 import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     MaterializeModule,

@@ -28,11 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     guid: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
   }, {});
   User.associate = function (models) {

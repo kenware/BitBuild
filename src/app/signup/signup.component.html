@@ -1,0 +1,46 @@
+<div id="modal1" materialize="modal" class="modal">
+  <div class="row white">
+    <div class="col s12 m6">
+        <div class="row">
+            <h4 class="center"> SignUp</h4>
+            <form class="col s12" >
+            <div class="row">
+                <div class="input-field col s12">
+                <input [(ngModel)] = "name" name="name" id="name" type="text" class="validate">
+                <label for="name">Full Name</label>
+                <span class="error">{{errors.name}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                <input [(ngModel)]="email" (ngModelChange) = "emailChange($event)" name="email" id="email" type="email" class="validate">
+                <label for="email">Email</label>
+                <span class="error">{{errors.email}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                <input [(ngModel)] = "password" name="password" id="password" type="password" class="validate">
+                <label for="password">Password</label>
+                </div>
+                <div class="input-field col s6">
+                <input [(ngModel)] = "vpassword" name="vpassword" id="verypassword" type="password" class="validate">
+                <label for="verypassword">Verify Password</label>
+                </div>
+                <span class="s12 error">{{errors.password}}</span>
+            </div>
+            <div class="row modal-footer">
+                <div class="col s12 center-align">
+                <button (click)="submit()" class="btn waves-effect waves-light submit-btn" type="submit">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="col s12 m6  hide-on-small-and-down">
+      <img src='../../assets/images/p2.jpg' class="responsive-img form-img">
+  </div>
+ </div>
+</div>

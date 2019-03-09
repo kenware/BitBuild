@@ -1,5 +1,6 @@
 
 import bcrypt from 'bcrypt';
+import MyWallet from 'blockchain.info/MyWallet';
 import { User } from '../models';
 import UserHelper from '../helpers/user';
 
@@ -7,13 +8,17 @@ export default class userController {
   async signUp(req, res) {
     try {
       const { email, name } = req.body;
+      const apiCode = process.env.APICODE;
+      const option = { apiHost: process.env.APIHOST, hd: true, label: name };
       const password = bcrypt.hashSync(req.body.password, 10);
-      let user = await User.create({
-        email, name, password, isAdmin: req.isAdmin,
-      });
 
+      const wallet = await MyWallet.create(req.body.password, apiCode, option);
+
+      let user = await User.create({
+        email, name, password, isAdmin: req.isAdmin, guid: wallet.guid,
+      });
       user = new UserHelper().userWithToken(user);
-      return res.status(201).json(user);
+      return res.status(201).json({ user });
     } catch (err) {
       return res.status(400).json(err);
     }

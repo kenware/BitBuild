@@ -27,10 +27,10 @@ module.exports = {
       type: Sequelize.DECIMAL,
     },
     address: {
-      type: Sequelize.DECIMAL,
+      type: Sequelize.STRING,
     },
     guid: {
-      type: Sequelize.DECIMAL,
+      type: Sequelize.STRING,
     },
     createdAt: {
       allowNull: false,
