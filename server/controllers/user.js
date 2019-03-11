@@ -12,10 +12,10 @@ export default class userController {
       const option = { apiHost: process.env.APIHOST, hd: true, label: name };
       const password = bcrypt.hashSync(req.body.password, 10);
 
-      const wallet = await MyWallet.create(req.body.password, apiCode, option);
+      // const wallet = await MyWallet.create(req.body.password, apiCode, option);
 
       let user = await User.create({
-        email, name, password, isAdmin: req.isAdmin, guid: wallet.guid,
+        email, name, password, isAdmin: req.isAdmin, guid: 'wallet.guid',
       });
       user = new UserHelper().userWithToken(user);
       return res.status(201).json(user);

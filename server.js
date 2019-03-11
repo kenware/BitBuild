@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import userRoute from './server/router/user';
 import planRoute from './server/router/plan';
+import walletRoute from './server/router/wallet';
 
 require('dotenv').config();
 
@@ -20,6 +21,7 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
 
 app.use('/api/v1', userRoute);
 app.use('/api/v1', planRoute);
+app.use('/api/v1', walletRoute);
 app.use(express.static(path.join(__dirname, '/dist/BitBuild')));
 app.use('*', (req, res) => res.sendFile(path.join(__dirname, './dist/BitBuild/index.html')));
 

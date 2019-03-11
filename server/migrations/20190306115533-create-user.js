@@ -27,7 +27,7 @@ module.exports = {
       type: Sequelize.DECIMAL,
     },
     address: {
-      type: Sequelize.STRING,
+      type: Sequelize.ARRAY(Sequelize.STRING),
     },
     guid: {
       type: Sequelize.STRING,

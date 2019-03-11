@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "dehydrogenase",
-    "database": "bitbuild_dev",
+    "database": "bitbuild",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
