@@ -1,0 +1,33 @@
+<div id="login" materialize="modal" [materializeActions]="actions" class="modal">
+  <div class="row white">
+    <div class="col s12 m6">
+        <div class="row">
+            <h4 class="center"> Login</h4>
+            <form class="col s12" >
+            <div class="row">
+                <div class="input-field col s12">
+                <input [(ngModel)]="email" name="email" id="email2" type="email" class="validate">
+                <label for="email2">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                <input [(ngModel)] = "password" name="password" id="password2" type="password" class="validate">
+                <label for="password2">Password</label>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div class="col s12 center-align">
+                <button (click)="submit()" class="btn waves-effect waves-light submit-btn" type="submit">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="col s12 m6  hide-on-small-and-down">
+      <img src='../../assets/images/p6.png' class="responsive-img form-img">
+  </div>
+ </div>
+</div>
