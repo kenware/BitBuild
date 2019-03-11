@@ -1,8 +1,5 @@
-import Sequelize from 'sequelize';
 
 import { Plan } from '../models';
-
-const { Op } = Sequelize;
 
 export default class PlanController {
   async post(req, res) {
@@ -21,7 +18,6 @@ export default class PlanController {
   async get(req, res) {
     try {
       const { where, include } = req;
-      console.log(include);
       const plans = await Plan.findAll({ where, include });
       return res.status(200).json(plans);
     } catch (err) {
@@ -29,6 +25,3 @@ export default class PlanController {
     }
   }
 }
-// [ { model: User,
-//     as: 'users',
-//     attributes: [ 'id', 'email', 'wallet' ] } ]
