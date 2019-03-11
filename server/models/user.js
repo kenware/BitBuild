@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     address: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: [],
     },
     guid: {
       type: DataTypes.STRING,
