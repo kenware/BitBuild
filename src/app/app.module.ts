@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterializeModule } from 'angular2-materialize';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
@@ -14,13 +14,16 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
+import { ChartComponent } from './chart/chart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    AccountComponent
+    AccountComponent,
+    ChartComponent
   ],
   imports: [
     MaterializeModule,
@@ -30,7 +33,8 @@ import { AccountComponent } from './account/account.component';
     FormsModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

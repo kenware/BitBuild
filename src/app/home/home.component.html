@@ -25,14 +25,7 @@
       </ul>
     </div>
     <div *ngIf="viewStat" class="col s12 hide-on-med-and-up">
-        <canvas baseChart width="400" height="400"
-        [datasets]="lineChartData"
-        [labels]="lineChartLabels"
-        [options]="lineChartOptions"
-        [colors]="lineChartColors"
-        [legend]="lineChartLegend"
-        [chartType]="lineChartType"
-        ></canvas>
+
       </div>
     <div class="col s12 m4 text">
         <h5 class="">Do you want to invest on bitcoin market on bitbuild?</h5>
@@ -77,14 +70,7 @@
   <div class="row">
     <h5 class="center"> Bitcoin Exchange Rate Of Major Currencies</h5>
     <div class="col s12">
-      <canvas baseChart width="400" height="400"
-      [datasets]="lineChartData"
-      [labels]="lineChartLabels"
-      [options]="lineChartOptions"
-      [colors]="lineChartColors"
-      [legend]="lineChartLegend"
-      [chartType]="lineChartType"
-      ></canvas>
+      <app-chart [lineChartLabels]="lineChartLabels" [lineChartData]="lineChartData"></app-chart>
     </div>
   </div>
 </section>

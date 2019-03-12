@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import Validator from 'validatorjs';
 import { Alert } from '../shared/alert';
 import { WalletService } from '../service/wallet/wallet.service';
@@ -23,6 +23,8 @@ export class SignupComponent implements OnInit {
     name: null,
     password: null,
   };
+  @Output() onSubmit = new EventEmitter<boolean>();
+  
   actions = new EventEmitter<string|MaterializeAction>();
   constructor(private WalletService: WalletService, private AuthService: AuthService, private router: Router) { }
 
@@ -38,9 +40,10 @@ export class SignupComponent implements OnInit {
   }
   save(user) {
     console.log(user)
-    const { id, token, guid } = user;
-    this.AuthService.authenticate(id, token, guid)
+    const { id, token, guid, email } = user;
+    this.AuthService.authenticate(id, token, guid, email)
     const message = 'SignUp successful'
+    this.onSubmit.emit(true);
     Alert('SignUp', 'success', { message }, 3000);
     this.actions.emit({action:"modal",params:['close']});
     this.router.navigate(['/account'])

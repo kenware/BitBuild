@@ -16,7 +16,7 @@ router.post(
 );
 router.get(
   '/plans',
-  //   new Auth().verifyToken,
+  new Auth().verifyToken,
   new PlanMiddleware().get,
   new IncludeMiddleware().include,
   new FilterMiddleware().filter,

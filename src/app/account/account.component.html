@@ -1,4 +1,93 @@
-<p>
-  account works!
-  {{token}}
-</p>
+<div class="account">
+   <div class="account-container">
+    <div class="row">
+      <div class="col s12 m4">
+        <h5>Wallet</h5>
+        <div class="wallet">
+           <div class="title">
+             Balance
+           </div>
+           <p class="content">
+             {{walletBalance.balance}}
+           </p>
+        </div>
+      </div>
+     <div class="col s12 m4">
+      <h5>Market Price</h5>
+      <div class="wallet">
+         <div class="title">
+           US Doller Per BTC
+         </div>
+         <p class="content">
+           ${{currentRate}}
+         </p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <h5>Investment</h5>
+      <div class="wallet">
+         <div class="title">
+           Total No. Of Plan Invested
+         </div>
+         <p class="content">
+           {{userPlan.length}}
+         </p>
+      </div>
+    </div>
+   </div>
+   <div class="row white">
+      <div class="col s12 m6">
+        <div class="guid">
+          <h5 class="">Investment Guide</h5>
+          <h6 class="bold">Two easy steps to invest and start earning</h6>
+          <p>
+            <i class="material-icons">directions_walk</i> Navigate to MyWallet and fund the wallet with the wallet/bitcoin address.
+            All wallet transactions are free.
+          </p>
+          <p>
+              <i class="material-icons">directions_walk</i> Select any plan from the <span class="weight">Invest Now</span> section to invest. 
+              If there is no suitable plan for you, select <span class="weight">custom plan </span>to specify the amount you want to invest.
+          </p>
+          </div>
+      </div>
+      <div class="col s12 m6 center">
+        <div class="row invest-container">
+          <h5 class="left">Invest Now</h5>
+          <form class="col s12 invest-form">
+              <div class="row">
+                <div class="input-field col s8">
+                  <select [(ngModel)]="plan" (ngModelChange)="selectPlan($event)" name="plan" materialize="material_select" name='currency'>
+                      <option value="test">Testing</option>
+                      <option value="starter">Starter</option>
+                      <option value="investor">Investor</option>
+                      <option value="aInvestor">Average Investor</option>
+                      <option value="pInvestor">Premium Investor</option>
+                      <option value="custom">custom Investor</option>
+                  </select>
+                  <label>Select Plan</label>
+                </div>
+                <div *ngIf="!isCustom" class="input-field col s4">
+                  <input id="amount" type="number" class="validate" disabled>
+                  <label for="amount">${{planData[plan]}} </label>
+                </div>
+                <div *ngIf="isCustom" class="input-field col s4">
+                  <input id="amount" [(ngModel)]="customPrice" name="customPrice" type="number" class="validate">
+                  <label for="amount">Enter Price</label>
+                </div>
+              </div>
+              <button (click)="invest()" class="btn waves-effect waves-light z-depth-1 center" type="submit" name="action">Invest
+                  <i class="material-icons right">send</i>
+              </button>
+            </form>
+        </div>
+     </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6 offset-m3 ">
+          <h5>Historical Bitcoin Price For The Past Week</h5>
+          <app-chart [lineChartLabels]="lineChartLabels" [lineChartData]="lineChartData"></app-chart>
+        </div>
+
+      </div>
+    </div>
+   </div>

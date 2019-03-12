@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {MaterializeAction} from "angular2-materialize";
 import { host } from '../shared/config';
 import { WalletService } from '../service/wallet/wallet.service';
@@ -14,15 +14,17 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   email: String = '';
   password: String = '';
+  @Output() onSubmit = new EventEmitter<boolean>();
+  
   actions = new EventEmitter<string|MaterializeAction>();
   constructor(private WalletService: WalletService, private AuthService: AuthService, private router: Router) { }
   
   ngOnInit() {
   }
   save(response) {
-   console
-   const { id, token, guid } = response;
-   this.AuthService.authenticate(id, token, guid)
+   const { id, token, guid, email } = response;
+   this.AuthService.authenticate(id, token, guid, email)
+   this.onSubmit.emit(true);
    Alert('Login Success', 'success', {message: 'Login successful'}, 3000)
    this.actions.emit({action:"modal",params:['close']});
    this.router.navigate(['/account'])

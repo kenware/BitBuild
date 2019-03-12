@@ -6,6 +6,7 @@ import { ExchangeRateService } from '../service/exchange/exchange-rate.service';
 
 import { HomeComponent } from './home.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ChartComponent } from '../chart/chart.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -14,7 +15,7 @@ describe('HomeComponent', () => {
   beforeEach(() => {
 
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [ HomeComponent, ChartComponent ],
       imports: [
         FormsModule,
         ChartsModule,
