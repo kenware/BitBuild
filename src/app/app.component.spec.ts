@@ -9,22 +9,25 @@ import { MaterializeModule } from 'angular2-materialize';
 import 'materialize-css';
 import 'materialize-css/dist/css/materialize.css';
 import * as Materialize from "angular2-materialize";
+import { Router } from '@angular/router';
+import { AuthService } from './service/auth/auth.service';
 
 describe('AppComponent', () => {
+  let service: AuthService
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
         FormsModule,
         HttpClientTestingModule,
-        MaterializeModule
+        MaterializeModule,
 
       ],
       declarations: [
         AppComponent,
         SignupComponent,
         LoginComponent
-      ],
+      ]
     }).compileComponents();
   }));
 
