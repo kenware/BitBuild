@@ -23,6 +23,7 @@ export class SignupComponent implements OnInit {
     name: null,
     password: null,
   };
+  user: any = {}
   @Output() onSubmit = new EventEmitter<boolean>();
   
   actions = new EventEmitter<string|MaterializeAction>();
@@ -38,8 +39,8 @@ export class SignupComponent implements OnInit {
       this.errors.email = validator.errors.first('email')
     }
   }
+
   save(user) {
-    console.log(user)
     const { id, token, guid, email } = user;
     this.AuthService.authenticate(id, token, guid, email)
     const message = 'SignUp successful'
@@ -48,6 +49,16 @@ export class SignupComponent implements OnInit {
     this.actions.emit({action:"modal",params:['close']});
     this.router.navigate(['/account'])
   }
+
+  createAccount(user) {
+    this.user = user
+    const url = `${host}/v1/wallet/accounts`;
+      this.WalletService.post(url, user.name).subscribe(
+        account => this.save(this.user),
+        error => this.save(this.user)
+      )
+  }
+
   submit() {
     this.errors = {}
     const data = {
@@ -71,7 +82,7 @@ export class SignupComponent implements OnInit {
     if (!isError) {
       const url = `${host}/v1/auth/signup`;
       this.WalletService.post(url, data).subscribe(
-        user => this.save(user),
+        user => this.createAccount(user),
         error => Alert('SignUp', 'error', error.error.errors, 3000)
       )
     }

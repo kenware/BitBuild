@@ -61,12 +61,16 @@ describe('SignupComponent', () => {
     component.emailChange('ejykken@gmail');
     expect(component.errors.email).toEqual('The email format is invalid.');
   });
-  it('should call save method ', () => {
+  it('should call component methods method ', () => {
     const user = { id:1, token: 'sgshhs', guid: '242fsfsg'}
+    component.createAccount(user)
     component.save(user);
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/account']);
     const save = spyOn(component, 'save')
+    const createAccount = spyOn(component, 'createAccount')
     component.save(user);
+    component.createAccount(user)
     expect(save).toHaveBeenCalled()
+    expect(createAccount).toHaveBeenCalled()
   });
 });
