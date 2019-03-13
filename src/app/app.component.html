@@ -12,6 +12,7 @@
             {{user.email}} <i class="material-icons right">arrow_drop_down</i>
           </a>   
         </li>
+        <li *ngIf="user.token" routeLinkActive="active"><a routerLink="/wallet">Wallet</a></li>
         <li *ngIf="user.token" routeLinkActive="active"><a routerLink="/account">Account</a></li>
         <li routeLinkActive="active"><a routerLink="/about">About</a></li>
         <li routeLinkActive="active"><a routerLink="/contact">Contact</a></li>
@@ -25,6 +26,7 @@
                 {{user.email}}
               </a>   
             </li>
+          <li *ngIf="user.token" routeLinkActive="active"><a routerLink="/wallet">Wallet</a></li>
           <li *ngIf="user.token" routeLinkActive="active"><a routerLink="/account">Account</a></li>
           <li routeLinkActive="active"><a routerLink="/about">About</a></li>
           <li routeLinkActive="active"><a routerLink="/contact">Contact</a></li>

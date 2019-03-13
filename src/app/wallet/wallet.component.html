@@ -1,0 +1,64 @@
+
+<div class="wallet-container">
+  <div class="section">
+     <div class="row">
+       <h4 class="center">My Wallet</h4>
+       <h5 class="center">Balance: &nbsp;{{walletBalance.balance}} BTC</h5>
+       <div class="col info s12 m4 offset-m2 center">
+          <div class="instruction white">
+          <img src="../../assets/images/c5.png" class="wallet-img" />
+          </div>
+        </div>
+       <div class="col info s12 m4">
+         <div class="instruction white"><br>
+            <span class="title">Info!</span><br>
+           <ul>
+             <li>=> Copy any of the wallet address</li>
+             <li>=> Use any of the address to fund your wallet</li>
+             <li>=> Multiple address within this wallet is allowed</li>
+             <li>=> Visit <a routerLink="/wallet/transactions">Transaction</a> page to view all wallet transactions.</li>
+             <li><div class="wallet-link"><a class="" routerLink="/wallet/transactions">
+              <span class="wallet-nav">Wallet Transactions</span> 
+              <i class="material-icons right">send</i></a>
+            </div></li>      
+           </ul>
+         </div>
+       </div>
+     </div>
+     <br>
+     <div class="row">
+        <div class="col s12 m8 offset-m2">
+          <h5> My Wallet Address</h5>
+        </div>
+        <div class="col s12 m8 offset-m2 white">
+            <table class="striped">      
+                <tbody>
+                  <tr *ngFor="let account of accounts">
+                    <table class="">
+                      <tbody>
+                        <tr>
+                          <th>Account name</th>
+                          <td>{{account.label}}</td>
+                        </tr>
+                        <tr >
+                          <th>Bitcoin address</th>
+                          <td><input type="text" value="{{account.receiveAddress}}" #balance> <button (click)="copyBalance(balance)">Copy Address</button></td>
+                          </tr>
+                        <tr >
+                          <th>Address Account Balance</th>
+                          <td>{{account.balance}} BTC</td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+      <div class="row">
+        <br>
+        <div class="col s12 m8 offset-m2"> <button>Generate New Wallet Address</button></div>
+      </div>
+      <br><br>
+  </div>
+</div>
