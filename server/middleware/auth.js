@@ -7,8 +7,13 @@ export default class auth {
     token = token.replace('Bearer ', '');
     try {
       const verify = jwt.verify(token, process.env.SECRETE);
-      const { id, email, isAdmin } = verify;
-      req.decoded = { id, email, isAdmin };
+      const {
+        id, email, isAdmin, guid,
+      } = verify;
+
+      req.decoded = {
+        id, email, isAdmin, guid,
+      };
       next();
     } catch (err) {
       return res.status(401).json({ errors: { message: 'Unathorized access' } });

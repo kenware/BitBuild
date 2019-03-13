@@ -21,4 +21,9 @@ router.get(
   new Auth().verifyToken,
   new UserController().getOne,
 );
+router.get(
+  '/refresh/token',
+  new Auth().verifyToken,
+  new UserController().refresh,
+);
 export default router;

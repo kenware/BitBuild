@@ -4,6 +4,7 @@ import { AuthService } from '../service/auth/auth.service';
 import { WalletService } from '../service/wallet/wallet.service';
 import { host } from '../shared/config';
 import { Alert } from '../shared/alert';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,8 +16,8 @@ export class AccountComponent implements OnInit {
   historicalData: object = {}
   lineChartLabels: any[] = [];
   lineChartData: any[] = [ { data: [], label: 'Series A' },]
-  walletBalance: number|Object = 0;
-  userPlan: []|object = []
+  balance: number = 0;
+  totalUserPlan: number = 0
   currentRate: number|object = 0
   customPrice: number = null
   plan: string = 'test'
@@ -27,19 +28,24 @@ export class AccountComponent implements OnInit {
     aInvestor: 5000, pInvestor: 10000, custom: this.customPrice
   }
   constructor(private HistoricalPrice: ExchangeRateService,
-    private AuthService: AuthService, private WalletService: WalletService) { }
+    private AuthService: AuthService, private WalletService: WalletService,
+    private router: Router) { }
   
   ngOnInit() {
     const historicalUrl = 'charts/market-price?timespan=1weeks&format=json&cors=true';
     const balanceUrl = 'v1/wallet/balance';
     const url = 'ticker'
 
-    this.AuthService.verifyAuth()
+    this.WalletService.get(`${host}/v1/refresh/token`).subscribe(
+      user => this.refreshAuth(user),
+      err => this.logout()
+    )
+  
     this.HistoricalPrice.getExchangeRate(historicalUrl).subscribe(
       data => this.formatData(data)
     )
     this.WalletService.get(`${host}/${balanceUrl}`).subscribe(
-      balance => this.walletBalance = balance
+      balance => this.balance = balance['balance']
     )
     this.getPlan();
     this.HistoricalPrice.getExchangeRate(url).subscribe(
@@ -50,8 +56,18 @@ export class AccountComponent implements OnInit {
   getPlan() {
     const userPlanUrl = `v1/plans?userId=${localStorage.getItem('id')}`
     this.WalletService.get(`${host}/${userPlanUrl}`).subscribe(
-      plan => this.userPlan = plan
+      (plan: any []) => this.totalUserPlan = plan.length
     )
+  }
+
+  logout() {
+    this.AuthService.logout()
+    this.router.navigate(['/'])
+  }
+
+  refreshAuth(user) {
+    const { id, guid, token, email } = user;
+    this.AuthService.authenticate(id, token, guid, email)
   }
 
   formatDate(number) {
