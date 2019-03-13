@@ -12,7 +12,7 @@
     "test-dev": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {

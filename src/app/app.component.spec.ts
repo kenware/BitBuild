@@ -42,4 +42,20 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('BitBuild');
   });
+  it('test component methods', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.authenticate()
+    app.logout()
+    app.ngOnInit()
+    spyOn(app, 'authenticate')
+    spyOn(app, 'logout')
+    spyOn(app, 'ngOnInit')
+    app.authenticate()
+    app.logout()
+    app.ngOnInit()
+    expect(app.logout).toHaveBeenCalled();
+    expect(app.authenticate).toHaveBeenCalled();
+    expect(app.ngOnInit).toHaveBeenCalled();
+  });
 });

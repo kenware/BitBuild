@@ -2,7 +2,7 @@
 .account {
     margin-top: 0.2rem;
     background-color: #F6F9FC;
-    height: 160vh;
+    min-height: 160vh;
     .value-align {
         min-height: 165px !important;
     }
@@ -71,4 +71,14 @@
 }
 .chart-col {
   background-color: #F6F9FC !important;
+}
+.wallet-link {
+  width: 120px;
+  .wallet-nav {
+    font-size: 17px;
+    font-weight: 600
+  }
+}
+a {
+  color: #eed2a1;
 }

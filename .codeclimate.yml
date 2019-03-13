@@ -4,3 +4,4 @@ exclude_patterns:
 - "server/models/"
 - "server/migrations/"
 - "server/seedes/"
+- "**/*.spec.ts"

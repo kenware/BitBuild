@@ -1,0 +1,32 @@
+.wallet-container {
+    margin-top: 0.2rem;
+    background-color: #F6F9FC;
+    min-height: 100vh;
+    .info {
+        margin-top: 50px;
+    }
+    .wallet-img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .instruction {
+        height: 250px;
+        ul li, .title { 
+          margin: 1rem 0 0 1rem;
+          font-size: 16px;
+        }
+        .title {
+          font-weight: 500;
+        }
+      }
+}
+.wallet-link {
+    width: 200px;
+    .wallet-nav {
+      font-size: 17px;
+      font-weight: 600
+    }
+  }
+  a {
+    color: #f3a827;
+  }

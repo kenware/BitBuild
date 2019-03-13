@@ -15,6 +15,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { ChartComponent } from './chart/chart.component';
+import { WalletComponent } from './wallet/wallet.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ChartComponent } from './chart/chart.component';
     SignupComponent,
     LoginComponent,
     AccountComponent,
-    ChartComponent
+    ChartComponent,
+    WalletComponent,
+    TransactionsComponent
   ],
   imports: [
     MaterializeModule,
