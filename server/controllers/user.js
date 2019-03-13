@@ -1,5 +1,6 @@
 
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import MyWallet from 'blockchain.info/MyWallet';
 import { User } from '../models';
 import UserHelper from '../helpers/user';
@@ -49,6 +50,17 @@ export default class userController {
 
       const user = await User.findByPk(id);
       if (!user) { return res.status(404).json({ errors: { message: 'User not found' } }); }
+      return res.status(200).json(user);
+    } catch (err) {
+      return res.status(400).json(err);
+    }
+  }
+
+  async refresh(req, res) {
+    try {
+      const token = jwt.sign(req.decoded, process.env.SECRETE, { expiresIn: '1h' });
+      const user = req.decoded;
+      user.token = token;
       return res.status(200).json(user);
     } catch (err) {
       return res.status(400).json(err);

@@ -7,7 +7,7 @@
     "start-dev": "ng serve -o",
     "start:node": "nodemon --exec babel-node server.js --presets=env",
     "start": "babel-node server.js --presets=env &npm run blockchain",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test --code-coverage --watch=false --no-progress",
     "test-dev": "ng test --code-coverage",
     "lint": "ng lint",

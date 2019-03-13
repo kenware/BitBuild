@@ -45,4 +45,17 @@ describe('WalletComponent', () => {
     button.click()
     expect(component.copyBalance).toHaveBeenCalled();
   });
+  it('component methods should be called', () => {
+    const user = {id:1, email: 'email', guid: 'guid', token: 'token'}
+    component.logout()
+    component.refreshAuth(user)
+    spyOn(component, 'logout')
+    spyOn(component, 'refreshAuth')
+
+    component.logout()
+    component.refreshAuth(user)
+    expect(component.logout).toHaveBeenCalled()
+    expect(component.refreshAuth).toHaveBeenCalled()
+    expect(component).toBeTruthy();
+  });
 });

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router"
-import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -22,13 +21,13 @@ export class AuthService {
     localStorage.removeItem('email')
     this.router.navigate(['/'])
   }
-  verifyAuth(): object{
+  verifyAuth(): { token, id, guid, email } {
     const token = localStorage.getItem('accessToken');
     const id = localStorage.getItem('id')
     const guid = localStorage.getItem('guid')
     const email = localStorage.getItem('email')
     if (!token) {
-      this.router.navigate([''])
+      this.router.navigate(['/'])
     }
     return { token, id, guid, email };  
   }

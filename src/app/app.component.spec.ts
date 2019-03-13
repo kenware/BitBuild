@@ -58,4 +58,17 @@ describe('AppComponent', () => {
     expect(app.authenticate).toHaveBeenCalled();
     expect(app.ngOnInit).toHaveBeenCalled();
   });
+
+  it('component methods should be called', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
+    const user = {id:1, email: 'email', guid: 'guid', token: 'token'}
+    
+    component.refreshAuth(user)
+    spyOn(component, 'refreshAuth')
+
+    component.refreshAuth(user)
+    expect(component.refreshAuth).toHaveBeenCalled()
+    expect(component).toBeTruthy();
+  });
 });
