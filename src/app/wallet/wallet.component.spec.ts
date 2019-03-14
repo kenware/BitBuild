@@ -58,4 +58,10 @@ describe('WalletComponent', () => {
     expect(component.refreshAuth).toHaveBeenCalled()
     expect(component).toBeTruthy();
   });
+  it('should call generateAddress method on button click', () => {
+    let button = fixture.debugElement.nativeElement.querySelector('.address');
+    button.click()
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+  });
 });

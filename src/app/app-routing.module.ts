@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { InvestmentComponent } from './investment/investment.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path: 'wallet/transactions', component: TransactionsComponent
+  },
+  {
+    path: 'account/investments', component: InvestmentComponent
   }
 ];
 

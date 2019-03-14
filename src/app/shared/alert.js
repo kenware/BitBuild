@@ -34,3 +34,25 @@ export const Alert = (title, status, messageObject, timer) => {
     },
   });
 };
+
+export const alertWithPromise = text => swal({
+  text,
+  content: 'input',
+  buttons: {
+    cancel: {
+      text: 'Cancel',
+      value: false,
+      visible: true,
+      className: '',
+      closeModal: true,
+    },
+    confirm: {
+      text: 'Proceed',
+      value: true,
+      visible: true,
+      className: '',
+      closeModal: true,
+    },
+  },
+})
+  .then(value => value);

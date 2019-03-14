@@ -74,4 +74,13 @@ describe('AccountComponent', () => {
     expect(component.refreshAuth).toHaveBeenCalled()
     expect(component).toBeTruthy();
   });
+  it('should scroll to historical section of the page on button click', () => {
+    let button = fixture.debugElement.nativeElement.querySelector('.scroll');
+    button.click()
+    const scroll = spyOn(component, 'moveToStructure')
+    button.click()
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+    expect(scroll).toHaveBeenCalled()
+  });
 });

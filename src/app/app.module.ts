@@ -17,6 +17,7 @@ import { AccountComponent } from './account/account.component';
 import { ChartComponent } from './chart/chart.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { InvestmentComponent } from './investment/investment.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
     AccountComponent,
     ChartComponent,
     WalletComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    InvestmentComponent
   ],
   imports: [
     MaterializeModule,
