@@ -1,0 +1,29 @@
+
+.investment{
+  margin-top: 2px;
+  background-color: #F6F9FC;
+  min-height: 100vh;
+  .container-investment{
+  margin-left: 4%;
+  margin-right: 4%;
+  .card {
+    // background-color: #f1f1f1 !important;
+    .card-content {
+      p {
+          font-size: 15px;
+          margin-top: 0.8rem;
+      }
+      .bold {
+          font-weight: 500
+      }
+      .justify {
+        text-align: justify;
+      }
+      .yellow-color{
+        font-size: 17px;
+        color: #f1b856;
+      }
+    }
+  }
+}
+}

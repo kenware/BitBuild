@@ -1,3 +1,27 @@
-<p>
-  investment works!
-</p>
+<div class="investment">
+  <div class="container-investment">
+    <div class="row">
+       <br><br>
+      <h5 class="center">My Investments/Plans</h5>
+      <br>
+      <div *ngFor="let plan of plans" class="col s12 m4">
+        <div class="card white">
+            <div class="card-content">
+              <span class="card-title">{{data[plan.name]}}</span>
+              <p class="justify">The <span class="bold">Investment Build</span> is the sum of the amount of initial investment and all
+                interest generated. Every week, 5% of your investment amount is added to your investment.
+                Thus <span class="bold">Investment build</span> => investment + interest.
+              </p>
+              <p>Investments Amount: <span class="bold yellow-color">{{plan.amount}}</span></p>
+              <p>Investments Build: <span class="bold yellow-color">{{plan.principal}}</span></p>
+              <p>Investments Date: <span class="bold yellow-color">{{plan.createdAt | date }}</span></p>
+            </div>
+            <div class="card-action">
+              <a class="withdraw" (click)="withdraw(plan.id, plan.amount, plan.principal)">Withdraw</a>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
