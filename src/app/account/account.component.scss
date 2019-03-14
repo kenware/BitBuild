@@ -74,6 +74,12 @@
 }
 .wallet-link {
   width: 120px;
+}
+.wallet-investment {
+  width: 170px;
+}
+.wallet-link, .wallet-investment {
+  cursor: pointer;
   .wallet-nav {
     font-size: 17px;
     font-weight: 600

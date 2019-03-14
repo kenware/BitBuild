@@ -24,6 +24,8 @@ export class AppComponent implements OnInit{
   refreshAuth(user) {
     const { id, guid, token, email } = user;
     this.AuthService.authenticate(id, token, guid, email)
+    this.token = token;
+    this.email = email;
   }
 
   logout() {

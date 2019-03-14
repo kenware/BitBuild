@@ -8,7 +8,7 @@
              Balance
            </div>
            <p class="content">
-             {{balance}}
+             {{balance}} btc
            </p>
         </div>
         <div class="wallet-link"><a class="" routerLink="/account/wallet">
@@ -26,6 +26,10 @@
            ${{currentRate}}
          </p>
       </div>
+      <div class="wallet-investment"><a class="scroll" (click)="moveToStructure()">
+        <span class="wallet-nav">Historical Prices</span> 
+        <i class="material-icons right">send</i></a>
+      </div>
     </div>
     <div class="col s12 m4">
       <h5>Investment</h5>
@@ -36,6 +40,10 @@
          <p class="content">
            {{totalUserPlan}}
          </p>
+      </div>
+      <div class="wallet-investment"><a class="" routerLink="/account/investments">
+        <span class="wallet-nav">My Investments</span> 
+        <i class="material-icons right">send</i></a>
       </div>
     </div>
    </div>
@@ -86,7 +94,7 @@
         </div>
      </div>
       </div>
-      <div class="row">
+      <div class="row" id="historical" #historical>
         <div class="col s12 m6 offset-m3 ">
           <h5>Historical Bitcoin Price For The Past Week</h5>
           <app-chart [lineChartLabels]="lineChartLabels" [lineChartData]="lineChartData"></app-chart>

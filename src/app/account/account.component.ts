@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ExchangeRateService } from '../service/exchange/exchange-rate.service';
 import { AuthService } from '../service/auth/auth.service';
 import { WalletService } from '../service/wallet/wallet.service';
@@ -22,6 +22,7 @@ export class AccountComponent implements OnInit {
   customPrice: number = null
   plan: string = 'test'
   isCustom: boolean = false
+  @ViewChild('historical') public historical:ElementRef
 
   planData: object = {
     test: 100, starter: 500, investor: 1000,
@@ -113,4 +114,7 @@ export class AccountComponent implements OnInit {
       }
     )
   }
+  public moveToStructure():void {
+    this.historical.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+}
 }
