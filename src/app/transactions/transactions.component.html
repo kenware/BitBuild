@@ -1,3 +1,46 @@
-<p>
-  transactions works!
-</p>
+
+<div class="transaction">
+  <div class="transaction-container">
+    <div class="row">
+      <br>
+      <h5 class="center"> Address</h5>
+      <h6 class="center">{{address}}</h6>
+      <br>
+      <h5 class="col s12 m8 offset-m2"> Info!</h5>
+      <div class="col s12 m8 offset-m2 white info shadow">
+        <table class="striped">      
+         <tbody>
+          <tr>
+              <th>Address</th>
+              <td>{{transaction.address}}</td>
+          </tr>      
+          <tr>
+            <th>Transaction Hash</th>
+            <td>{{transaction.hash160}}</td>
+          </tr>
+          <tr >
+            <th>No. Of Transaction</th>
+            <td>{{transaction.n_tx}}</td>
+            </tr>
+          <tr >
+            <th>Total Bitcoin Received</th>
+            <td>{{transaction.total_received}}</td>
+          </tr>
+          <tr >
+            <th>Total Bitcoin Sent</th>
+            <td>{{transaction.total_sent}}</td>
+          </tr>
+          <tr >
+            <th>Final Balance</th>
+            <td>{{transaction.final_balance}}</td>
+            </tr>
+         </table>
+      </div>
+    </div>
+    <div class="row">
+      <h5 class="col s12 m8 offset-m2"> Transactions</h5>
+      <div class="col s12 m8 offset-m2 white info">
+      </div>
+    </div>
+  </div>
+</div>

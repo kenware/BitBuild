@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'account/wallet', component: WalletComponent
   },
   {
-    path: 'wallet/transactions', component: TransactionsComponent
+    path: 'wallet/transactions/:address', component: TransactionsComponent
   },
   {
     path: 'account/investments', component: InvestmentComponent

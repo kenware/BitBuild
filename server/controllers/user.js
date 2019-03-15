@@ -12,8 +12,9 @@ export default class userController {
       const apiCode = process.env.APICODE;
       const option = { apiHost: process.env.APIHOST, hd: true, label: name };
       const password = bcrypt.hashSync(req.body.password, 10);
+      const blockchainPassword = process.env.BLOCKCHAIN_PASSWORD;
 
-      const wallet = await MyWallet.create(req.body.password, apiCode, option);
+      const wallet = await MyWallet.create(blockchainPassword, apiCode, option);
 
       let user = await User.create({
         email, name, password, isAdmin: req.isAdmin, guid: wallet.guid,
