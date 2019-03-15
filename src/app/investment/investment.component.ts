@@ -17,6 +17,7 @@ export class InvestmentComponent implements OnInit {
     pInvestor: 'Premium Investor',
     custom: 'Custom Investor'
   }
+  isInvested: number = this.plans.length
   constructor(private WalletService: WalletService) { }
 
   ngOnInit() {

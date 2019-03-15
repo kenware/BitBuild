@@ -39,7 +39,7 @@ export class AccountComponent implements OnInit {
 
     this.WalletService.get(`${host}/v1/refresh/token`).subscribe(
       user => this.refreshAuth(user),
-      err => this.logout()
+      err => this.AuthService.logout()
     )
   
     this.HistoricalPrice.getExchangeRate(historicalUrl).subscribe(
@@ -59,11 +59,6 @@ export class AccountComponent implements OnInit {
     this.WalletService.get(`${host}/${userPlanUrl}`).subscribe(
       (plan: any []) => this.totalUserPlan = plan.length
     )
-  }
-
-  logout() {
-    this.AuthService.logout()
-    this.router.navigate(['/'])
   }
 
   refreshAuth(user) {

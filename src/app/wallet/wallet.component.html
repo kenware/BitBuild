@@ -16,11 +16,8 @@
              <li>=> Copy any of the wallet address</li>
              <li>=> Use any of the address to fund your wallet</li>
              <li>=> Multiple address within this wallet is allowed</li>
-             <li>=> Visit <a routerLink="/wallet/transactions">Transaction</a> page to view all wallet transactions.</li>
-             <li><div class="wallet-link"><a class="" routerLink="/wallet/transactions">
-              <span class="wallet-nav">Wallet Transactions</span> 
-              <i class="material-icons right">send</i></a>
-            </div></li>      
+             <li>=> Visit <a>Transaction</a> page to view all wallet transactions.</li>
+             <li>=> You can view all transaction of an address</li>      
            </ul>
          </div>
        </div>
@@ -48,6 +45,13 @@
                           <th>Address Account Balance</th>
                           <td>{{account.balance}} BTC</td>
                         </tr>
+                        <tr >
+                          <th>Address Transactions</th>
+                            <td><div class="wallet-link"><a class="" routerLink="/wallet/transactions/{{account.receiveAddress}}">
+                              <span class="wallet-nav">Address Transactions</span> 
+                              <i class="material-icons right">send</i></a>
+                            </div></td>
+                          </tr>
                     </tbody>
                   </table>
                   </tr>

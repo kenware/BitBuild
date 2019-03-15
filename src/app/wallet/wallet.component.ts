@@ -21,7 +21,7 @@ export class WalletComponent implements OnInit {
     
     this.WalletService.get(`${host}/v1/refresh/token`).subscribe(
       user => this.refreshAuth(user),
-      err => this.logout()
+      err => this.AuthService.logout()
     )
     this.getAccounts()
     this.WalletService.get(`${host}/${balanceUrl}`).subscribe(
@@ -41,11 +41,6 @@ export class WalletComponent implements OnInit {
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
     toast('Wallet address copied to clipboard', 3000)
-  }
-  
-  logout() {
-    this.AuthService.logout()
-    this.router.navigate(['/'])
   }
 
   refreshAuth(user) {

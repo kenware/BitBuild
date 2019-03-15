@@ -1,0 +1,13 @@
+.transaction {
+    margin-top: 0.2rem;
+    background-color: #F6F9FC;
+    min-height: 100vh;
+    .info {
+      div div {
+        padding: 1rem 0 0rem 1rem;
+      }
+    }
+    .shadow {
+    box-shadow: 0 0.125rem 0.5625rem 0 rgba(0, 0, 0, 0.05);
+    }
+}
