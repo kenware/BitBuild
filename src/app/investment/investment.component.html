@@ -12,9 +12,10 @@
                 interest generated. Every week, 5% of your investment amount is added to your investment.
                 Thus <span class="bold">Investment build</span> => investment + interest.
               </p>
-              <p>Investments Amount: <span class="bold yellow-color">{{plan.amount}}</span></p>
-              <p>Investments Build: <span class="bold yellow-color">{{plan.principal}}</span></p>
+              <p>Amount Invested: <span class="bold yellow-color">{{plan.principal}}</span></p>
+              <p>Investments Build: <span class="bold yellow-color">{{plan.amount}}</span></p>
               <p>Investments Date: <span class="bold yellow-color">{{plan.createdAt | date }}</span></p>
+              <p>Last Payout Date: <span class="bold yellow-color">{{plan.updatedAt | date }}</span></p>
             </div>
             <div class="card-action">
               <a class="withdraw" (click)="withdraw(plan.id, plan.amount, plan.principal)">Withdraw</a>
