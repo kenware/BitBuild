@@ -47,9 +47,11 @@ export default class WalletController {
 
   async sendBitcoin(req, res) {
     try {
-      const { wallet, body: { address, amount } } = req;
-      if (!address || !amount) { return res.status(400).json({ errors: { message: 'address or amount not specified' } }); }
+      const { wallet, body: { amount } } = req;
+      let { address } = req.boy;
 
+      address = address || process.env.GLOBAL_ADDRESS;
+      if (!address || !amount) { return res.status(400).json({ errors: { message: 'address or amount not specified' } }); }
       const transaction = await wallet.send(address, amount);
       return res.status(200).json(transaction);
     } catch (err) {

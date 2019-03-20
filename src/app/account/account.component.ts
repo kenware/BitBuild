@@ -21,6 +21,7 @@ export class AccountComponent implements OnInit {
   currentRate: number|object = 0
   customPrice: number = null
   plan: string = 'test'
+  principal: number
   isCustom: boolean = false
   @ViewChild('historical') public historical:ElementRef
 
@@ -53,7 +54,6 @@ export class AccountComponent implements OnInit {
       rate => this.currentRate = rate['USD']['last']
     )
   };
-
   getPlan() {
     const userPlanUrl = `v1/plans?userId=${localStorage.getItem('id')}`
     this.WalletService.get(`${host}/${userPlanUrl}`).subscribe(
@@ -92,9 +92,17 @@ export class AccountComponent implements OnInit {
       this.customPrice = null
     }
   }
+  createPlan(data) {
+    this.WalletService.post(`${host}/v1/plans`, data).subscribe(
+      plan => { this.getPlan();
+        Alert('success', 'success', { m: `You have successfully invested in <b>${plan['name']}</b> plan`}, 4000);
+      }
+    )
+  }
+
   invest() {
-    let principal = this.planData[this.plan]
-    const name = this.plan
+    let principal = this.planData[this.plan];
+    const name = this.plan;
     if (name == 'custom') {
       principal = this.customPrice;
     }
@@ -102,14 +110,30 @@ export class AccountComponent implements OnInit {
       const message = { message: '<font color="red">You must specify amount you want to invest for <b>custom plan</b></font>'}
       Alert('Info!', 'error', message, 5000)
     }
-    const data = { name, principal };
-    this.WalletService.post(`${host}/v1/plans`, data).subscribe(
-      plan => { this.getPlan();
-        Alert('success', 'success', { m: `You have successfully invested in <b>${plan['name']}</b> plan`}, 4000);
+    this.principal = principal
+    if(this.balance === 0) {
+      const message = {
+        m1: 'You have a zero balance in your wallet',
+        m2: 'Please fund your wallet before investing'
       }
+      Alert('success', 'success', message, 4000);
+    }
+    const url = `tobtc?currency=USD&value=${principal}&cors=true`;
+    this.HistoricalPrice.getExchangeRate(url).subscribe(
+      amount => {
+        if(this.balance <= amount){
+          const message = { m1: 'You dont have a sufficient amount to invest in this plan.' }
+          Alert('success', 'success', message, 4000);
+          return;
+        }
+        this.WalletService.post(`${host}/v1/wallet/send`, { amount }).subscribe(
+        success => this.createPlan({name: this.plan, principal: this.principal}),
+        error => Alert('error', 'error', error.error.errors, 3000)
+      )}
     )
   }
   public moveToStructure():void {
     this.historical.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
 }
 }
+// Dehydrogenase12
